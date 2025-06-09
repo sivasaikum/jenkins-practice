@@ -3,6 +3,7 @@ pipeline {
     environment {
         PROJECT = 'ROBOSHOP'
         COMPONENT = 'BACKEND'
+        branch = 'production'
     }
     options {
         disableConcurrentBuilds()
@@ -60,6 +61,9 @@ pipeline {
                 parameters {
                 string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
                 }
+            }
+            when {
+                branch 'production'
             }
             steps {
                 script {
