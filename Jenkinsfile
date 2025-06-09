@@ -63,7 +63,7 @@ pipeline {
                 }
             }
             when {
-                branch 'production'
+                branch 'QA'
             }
             steps {
                 script {
