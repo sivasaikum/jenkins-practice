@@ -26,6 +26,7 @@ pipeline {
                 script {
                     sh """
                         echo "this is a Deploy stage"
+                        oydfgjkk
                     """
                 }
             }
