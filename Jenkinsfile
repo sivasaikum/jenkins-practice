@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                        echo "this is a Deply stage"
+                        echo "this is a Deploy stage"
                     """
                 }
             }
