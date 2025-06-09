@@ -5,7 +5,7 @@ pipeline {
         COMPONENT = 'BACKEND'
     }
     options {
-        disableConcurentBuilds()
+        disableConcurrentBuilds()
         timeout(time: 10 , unit: 'SECONDS')
     }
     stages {
