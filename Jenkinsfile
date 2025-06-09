@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                        sleep 10
+                        
                         echo "hello this is a build stage"
                         echo " This is a $PROJECT project"
                         
@@ -54,14 +54,14 @@ pipeline {
         }
 
         stage ('Deploy') {
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-                submitter "alice,bob"
-                parameters {
-                string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                }
-            }
+            // input {
+            //     message "Should we continue?"
+            //     ok "Yes, we should."
+            //     submitter "alice,bob"
+            //     parameters {
+            //     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+            //     }
+            // }
             when {
                 environment name: 'branch' , value: 'production'
             }
@@ -75,22 +75,33 @@ pipeline {
                 }
             }
         }
-    }
-        stage('Parallel Stage') {
+    
+        stage('Parallel Stages') {
             parallel {
-                stage('Branch A') {
+                stage('STAGE-1') {
                     steps {
-                        echo "On Branch A"
+                        script {
+                            sh """
+                                echo "hello this is stage-1"
+                                sleep 20
+                            """
+                        }
                     }
                 }
-                stage('Branch B') {
+                stage('STAGE-2') {
 
                     steps {
-                        echo "On Branch B"
+                        script {
+                            sh """
+                                echo " This is stage-2"
+                                sleep 30
+                            """
+                        }
                     }
                 }
             }
         }
+    }
     post {
         always {
            echo " This is a hello-pipeline build "
