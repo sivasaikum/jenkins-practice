@@ -30,5 +30,17 @@ pipeline {
                 }
             }
         }
+        
+    }
+    post {
+        always {
+           echo " This is a hello-pipeline build "
+        }
+        failure {
+            echo " This is a hello-pipeline build is failed for some reason"
+        }
+        success {
+            echo " This is a hello-pipeline build is Successed . Thanks ! "
+        }
     }
 }
