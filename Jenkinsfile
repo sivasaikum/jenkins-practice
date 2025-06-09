@@ -63,7 +63,7 @@ pipeline {
                 }
             }
             when {
-                environment name: 'branch' , value: 'production'
+                environment name: 'branch' , value: 'productio'
             }
             steps {
                 script {
