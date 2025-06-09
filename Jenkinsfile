@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                    sleep 10
+                        sleep 10
                         echo "hello this is a build stage"
                         echo " This is a $PROJECT project"
                         
@@ -53,17 +53,17 @@ pipeline {
         }
 
         stage ('Deploy') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
             steps {
                 script {
                     
-                    input {
-                        message "Should we continue?"
-                        ok "Yes, we should."
-                        submitter "alice,bob"
-                        parameters {
-                        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                        }
-                    }
                     sh """
                         echo "this is a Deploy stage"
                         
