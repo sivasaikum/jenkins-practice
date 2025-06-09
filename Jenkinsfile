@@ -1,7 +1,7 @@
 pipeline {
     agent { label 'AGENT-1'}
     environment {
-        PROJECT = 'EXPENSE'
+        PROJECT = 'ROBOSHOP'
         COMPONENT = 'BACKEND'
     }
     options {
@@ -24,6 +24,7 @@ pipeline {
             steps {
                 script {
                     sh """
+                    sleep 10
                         echo "hello this is a build stage"
                         echo " This is a $PROJECT project"
                         
