@@ -76,21 +76,21 @@ pipeline {
             }
         }
     }
-    stage('Parallel Stage') {
-        parallel {
-            stage('Branch A') {
-                steps {
-                    echo "On Branch A"
+        stage('Parallel Stage') {
+            parallel {
+                stage('Branch A') {
+                    steps {
+                        echo "On Branch A"
+                    }
                 }
-            }
-            stage('Branch B') {
+                stage('Branch B') {
 
-                steps {
-                    echo "On Branch B"
+                    steps {
+                        echo "On Branch B"
+                    }
                 }
             }
         }
-    }
     post {
         always {
            echo " This is a hello-pipeline build "
